@@ -80,6 +80,7 @@ import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.google.samples.apps.nowinandroid.core.designsystem.C
 import com.google.samples.apps.nowinandroid.core.designsystem.component.scrollbar.DraggableScrollbar
 import com.google.samples.apps.nowinandroid.core.designsystem.component.scrollbar.rememberDraggableScroller
 import com.google.samples.apps.nowinandroid.core.designsystem.component.scrollbar.scrollbarState
@@ -405,7 +406,9 @@ private fun RecentSearchesBody(
                         append(stringResource(id = searchR.string.feature_search_recent_searches))
                     }
                 },
-                modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
+                modifier = Modifier
+                    .padding(horizontal = 16.dp, vertical = 8.dp)
+                    .testTag(C.SEARCH_TiTLE)
             )
             if (recentSearchQueries.isNotEmpty()) {
                 IconButton(
@@ -453,9 +456,10 @@ private fun SearchToolbar(
     ) {
         IconButton(onClick = { onBackClick() }) {
             Icon(
+                modifier = Modifier.testTag(C.ON_BACK_ICON),
                 imageVector = NiaIcons.ArrowBack,
                 contentDescription = stringResource(
-                    id = string.core_ui_back,
+                    id = string.core_ui_back
                 ),
             )
         }
@@ -483,6 +487,7 @@ private fun SearchTextField(
 
     TextField(
         colors = TextFieldDefaults.colors(
+
             focusedIndicatorColor = Color.Transparent,
             unfocusedIndicatorColor = Color.Transparent,
             disabledIndicatorColor = Color.Transparent,
@@ -494,6 +499,7 @@ private fun SearchTextField(
                     id = searchR.string.feature_search_title,
                 ),
                 tint = MaterialTheme.colorScheme.onSurface,
+                modifier = Modifier.testTag(C.SEARCH_ICON)
             )
         },
         trailingIcon = {

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.google.samples.apps.nowinandroid.ui.homeworks.homework14
+package com.google.samples.apps.nowinandroid.ui.homeworks.homework15
 
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import com.google.samples.apps.nowinandroid.MainActivity
@@ -22,26 +22,30 @@ import com.kaspersky.components.composesupport.config.withComposeSupport
 import com.kaspersky.kaspresso.kaspresso.Kaspresso
 import com.kaspersky.kaspresso.testcases.api.testcase.TestCase
 import org.junit.Rule
-import org.junit.Test
+import kotlin.test.Test
 
-class MainScreeenTest: TestCase(Kaspresso.Builder.withComposeSupport()) {
+class HomeTest: TestCase(Kaspresso.Builder.withComposeSupport()) {
     @get:Rule
-    val composeTestRule = createAndroidComposeRule<MainActivity>()
-    val MainScreen= MainScreen(composeTestRule)
+    val composeTestRule
+    = createAndroidComposeRule<MainActivity>()
+    val MainScreen =
+      MainHomeworkScreen(composeTestRule)
+    val SearchScreen = SearchScreen(composeTestRule)
 
     @Test
-    fun doneButton(){
+    fun mainTest(){
         run{
-            step("КНопку чекаем"){
-                MainScreen{
-                    doneButton.assertIsDisplayed()
-                }
-            }
-
-            step("проверяем текст заголовка"){
-                MainScreen{
-                    topBarTitle.assertTextContains("Now in Android")
-                }
+            MainScreen{
+                topBarTitle.assertIsDisplayed()
+                navigationIconBar.assertIsDisplayed()
+                navigationIconBar.assertHasClickAction()
+                actionIconBar.assertIsDisplayed()
+                actionIconBar.assertHasClickAction()
+//                title.assertIsDisplayed()
+//                title.assertHasClickAction()
+//                subtitle.assertIsDisplayed()
+                navIcon.assertHasClickAction()
+                navIcon.assertIsDisplayed()
             }
         }
     }

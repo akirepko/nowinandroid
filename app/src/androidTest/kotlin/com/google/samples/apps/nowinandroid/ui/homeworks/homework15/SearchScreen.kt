@@ -14,20 +14,22 @@
  * limitations under the License.
  */
 
-package com.google.samples.apps.nowinandroid.ui.homeworks.homework14
+package com.google.samples.apps.nowinandroid.ui.homeworks.homework15
 
 import androidx.compose.ui.test.SemanticsNodeInteractionsProvider
+import com.google.samples.apps.nowinandroid.core.designsystem.C
 import io.github.kakaocup.compose.node.element.ComposeScreen
 import io.github.kakaocup.compose.node.element.KNode
 
-class MainScreen(semanticsProvider: SemanticsNodeInteractionsProvider) : ComposeScreen<MainScreen>(
-    semanticsProvider,
-) {
-    val doneButton = KNode(semanticsProvider) {
-        hasText("Done")
+class SearchScreen(semanticsProvider: SemanticsNodeInteractionsProvider) :
+    ComposeScreen<SearchScreen>(
+        semanticsProvider,
+    ) {
+    val backButton = KNode(semanticsProvider) {
+        hasTestTag(C.ON_BACK_ICON)
     }
 
-    val topBarTitle = KNode(semanticsProvider) {
-        hasTestTag("NiaTopAppBarTitle")
+    val title = KNode(semanticsProvider) {
+        hasTestTag(C.SEARCH_TiTLE)
     }
 }
