@@ -66,6 +66,7 @@ import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImagePainter
 import coil.compose.rememberAsyncImagePainter
+import com.google.samples.apps.nowinandroid.core.designsystem.C
 import com.google.samples.apps.nowinandroid.core.designsystem.R.drawable
 import com.google.samples.apps.nowinandroid.core.designsystem.component.NiaIconToggleButton
 import com.google.samples.apps.nowinandroid.core.designsystem.component.NiaTopicTag
@@ -120,7 +121,7 @@ fun NewsResourceCardExpanded(
             .semantics {
                 onClick(label = clickActionLabel, action = null)
             }
-            .testTag("newsResourceCard:${userNewsResource.id}"),
+            .testTag(C.NEWS_RESOURCE_CARD),
     ) {
         Column {
             if (!userNewsResource.headerImageUrl.isNullOrEmpty()) {
@@ -138,6 +139,7 @@ fun NewsResourceCardExpanded(
                             userNewsResource.title,
                             modifier = Modifier
                                 .fillMaxWidth((.8f))
+                                .testTag(C.NEWS_TITLE)
                                 .dragAndDropSource { _ ->
                                     DragAndDropTransferData(
                                         ClipData.newPlainText(
@@ -160,7 +162,8 @@ fun NewsResourceCardExpanded(
                             )
                             Spacer(modifier = Modifier.size(6.dp))
                         }
-                        NewsResourceMetaData(userNewsResource.publishDate, userNewsResource.type)
+                        NewsResourceMetaData(userNewsResource.publishDate, userNewsResource.type,
+                            modifier=Modifier.testTag(C.NEWS))
                     }
                     Spacer(modifier = Modifier.height(14.dp))
                     NewsResourceShortDescription(userNewsResource.content)
@@ -208,7 +211,9 @@ fun NewsResourceHeaderImage(
         Image(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(180.dp),
+                .height(180.dp)
+                .testTag(C.NEWS_IMAGE),
+
             contentScale = ContentScale.Crop,
             painter = if (isError.not() && !isLocalInspection) {
                 imageLoader
@@ -239,7 +244,7 @@ fun BookmarkButton(
     NiaIconToggleButton(
         checked = isBookmarked,
         onCheckedChange = { onClick() },
-        modifier = modifier,
+        modifier = Modifier.testTag(C.NEWS_FLAG),
         icon = {
             Icon(
                 imageVector = NiaIcons.BookmarkBorder,
@@ -284,6 +289,7 @@ fun dateFormatted(publishDate: Instant): String = DateTimeFormatter
 fun NewsResourceMetaData(
     publishDate: Instant,
     resourceType: String,
+    modifier: Modifier
 ) {
     val formattedDate = dateFormatted(publishDate)
     Text(

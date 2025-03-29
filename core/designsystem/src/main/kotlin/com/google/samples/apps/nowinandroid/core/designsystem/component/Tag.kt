@@ -25,6 +25,8 @@ import androidx.compose.material3.TextButton
 import androidx.compose.material3.contentColorFor
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
+import com.google.samples.apps.nowinandroid.core.designsystem.C
 import com.google.samples.apps.nowinandroid.core.designsystem.theme.NiaTheme
 
 @Composable
@@ -46,12 +48,14 @@ fun NiaTopicTag(
         TextButton(
             onClick = onClick,
             enabled = enabled,
+            modifier=Modifier.testTag(C.NEWS_TAG),
             colors = ButtonDefaults.textButtonColors(
                 containerColor = containerColor,
                 contentColor = contentColorFor(backgroundColor = containerColor),
                 disabledContainerColor = MaterialTheme.colorScheme.onSurface.copy(
                     alpha = NiaTagDefaults.DISABLED_TOPIC_TAG_CONTAINER_ALPHA,
                 ),
+
             ),
         ) {
             ProvideTextStyle(value = MaterialTheme.typography.labelSmall) {

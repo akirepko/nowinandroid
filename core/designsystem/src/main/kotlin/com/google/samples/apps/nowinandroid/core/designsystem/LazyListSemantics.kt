@@ -16,21 +16,11 @@
 
 package com.google.samples.apps.nowinandroid.core.designsystem
 
-object C {
+import androidx.compose.ui.semantics.SemanticsPropertyKey
+import androidx.compose.ui.semantics.SemanticsPropertyReceiver
 
-        const val UPPER_TITLE_TEXT = "NiaTopAppBarTitle"
-        const val UPPER_SEARCH_ICON = "NiaTopAppBarSearch"
-        const val SETTINGS_ICON = "NiaTopAppBarSettings"
-        const val ON_BACK_ICON = "OnBackIcon"
-        const val SEARCH_ICON = "SearchIcon"
-        const val SEARCH_TiTLE = "searchTextField"
-        const val NEWS_IMAGE = "newsImage"
-        const val NEWS_TITLE = "newsTitle"
-        const val NEWS_FLAG = "newsFlag"
-        const val  NEWS = "news"
-        const val  NEWS_TAG = "newsTag"
-        const val NEWS_RESOURCE_CARD = "newsResourceCard"
+val LazyListItemPositionSemantics = SemanticsPropertyKey<Int>("LazyListItemPosition")
+var SemanticsPropertyReceiver.lazyListItemPosition by LazyListItemPositionSemantics
 
-
-
-}
+val LazyListLengthSemantics = SemanticsPropertyKey<Int>("LazyListLength")
+var SemanticsPropertyReceiver.lazyListLength by LazyListLengthSemantics

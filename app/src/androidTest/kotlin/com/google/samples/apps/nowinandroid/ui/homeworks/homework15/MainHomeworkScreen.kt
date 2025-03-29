@@ -28,10 +28,12 @@ class MainHomeworkScreen(semanticsProvider: SemanticsNodeInteractionsProvider) :
         hasTestTag(C.UPPER_TITLE_TEXT)
     }
     val navigationIconBar = KNode (semanticsProvider){
+        useUnmergedTree=true
         hasTestTag(C.SEARCH_ICON)
     }
 
     val actionIconBar = KNode (semanticsProvider){
+        useUnmergedTree=true
         hasTestTag(C.SETTINGS_ICON)
     }
 
